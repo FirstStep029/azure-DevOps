@@ -5,4 +5,4 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- template: azure-DevOps/blob-storage/jobs/main.yml
+- template: ../jobs/main.yml
