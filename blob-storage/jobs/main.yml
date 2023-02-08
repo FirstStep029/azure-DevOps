@@ -1,0 +1,8 @@
+jobs:
+- job: Job_1
+  displayName: CREATE-BLOB-STORAGE
+  pool:
+    vmImage: ubuntu-latest
+  steps:
+    - template: $(build.sourcesDirectory)/azure-DevOps/blob-storage/tasks/main.yml
+    

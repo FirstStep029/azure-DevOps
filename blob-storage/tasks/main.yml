@@ -1,0 +1,14 @@
+steps:
+  # Checkouts the Pipeline Running Repository
+  - checkout: self
+    clean: true
+    fetchTag: false
+  
+  - powershell: |
+      Write-Host $(build.sourcesDirectory)
+      & $(build.sourcesDirectory)/azure-DevOps/azure/login.ps1 -method "SP"
+    displayName: az-login
+  
+  - powershell: |
+      & $(build.sourcesDirectory)/azure-DevOps/blob-storage/scripts/create-blob-storage.ps1
+    displayName: create-blob-storage
