@@ -2,7 +2,6 @@ steps:
   # Checkouts the Pipeline Running Repository
   - checkout: self
     clean: true
-    fetchTag: false
   
   - powershell: |
       Write-Host $(build.sourcesDirectory)
