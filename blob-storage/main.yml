@@ -5,4 +5,5 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- template: jobs/main.yml
+  jobs:
+    - template: jobs/main.yml
