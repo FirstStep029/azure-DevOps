@@ -1,6 +1,6 @@
 jobs:
 - job: Job_1
-  displayName: CREATE-BLOB-STORAGE
+  displayName: JOB_CREATE_BLOB_STORAGE
   pool:
     vmImage: ubuntu-latest
   steps:
