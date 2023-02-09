@@ -1,6 +1,21 @@
 trigger:
 - none
 
+parameters:
+- name: project_name
+  type: string
+- name: environment
+  type: string
+- name: region
+  type: string
+  default: eastus2
+- name: app_id
+  type: string
+- name: app_secret
+  type: string
+- name: tenant
+  type: string
+
 pool: 
   vmImage: ubuntu-latest
 
@@ -8,3 +23,10 @@ stages:
 - stage: STG_CREATE_BLOB_STORAGE
   jobs:
   - template: jobs/main.yml
+    parameters: 
+      project_name: ${{ project_name }}
+      environment: ${{ environment }}
+      region: ${{ region }}
+      app_id: ${{ app_id }}
+      app_secret: ${{ app_secret }}
+      tenant: ${{ tenant }}

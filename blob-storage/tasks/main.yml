@@ -1,3 +1,17 @@
+parameters:
+- name: project_name
+  type: string
+- name: environment
+  type: string
+- name: region
+  type: string
+- name: app_id
+  type: string
+- name: app_secret
+  type: string
+- name: tenant
+  type: string
+
 steps:
   # Checkouts the Pipeline Running Repository
   - checkout: self
@@ -6,6 +20,10 @@ steps:
   - powershell: |
       & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
     displayName: az-login
+    env:
+      AZURE_APP_ID: ${{ app_id }}
+      AZURE_APP_SECRET: ${{ app_secret }}
+      AZURE_TENANT: ${{ tenant }}
   
   - powershell: |
       & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
