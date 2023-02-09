@@ -4,10 +4,9 @@ steps:
     clean: true
   
   - powershell: |
-      Write-Host $(build.sourcesDirectory)
-      & $(build.sourcesDirectory)/azure-DevOps/azure/login.ps1 -method "SP"
+      & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
     displayName: az-login
   
   - powershell: |
-      & $(build.sourcesDirectory)/azure-DevOps/blob-storage/scripts/create-blob-storage.ps1
+      & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
     displayName: create-blob-storage
