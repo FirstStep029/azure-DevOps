@@ -20,9 +20,9 @@ jobs:
   steps:
     - template: ../tasks/main.yml
       parameters: 
-      project_name: ${{ parameters.project_name }}
-      environment: ${{ parameters.environment }}
-      region: ${{ parameters.region }}
-      app_id: ${{ parameters.app_id }}
-      app_secret: ${{ parameters.app_secret }}
-      tenant: ${{ parameters.tenant }}
+        project_name: ${{ parameters.project_name }}
+        environment: ${{ parameters.environment }}
+        region: ${{ parameters.region }}
+        app_id: ${{ parameters.app_id }}
+        app_secret: ${{ parameters.app_secret }}
+        tenant: ${{ parameters.tenant }}
