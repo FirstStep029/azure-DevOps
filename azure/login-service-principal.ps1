@@ -7,4 +7,6 @@ AZURE_APP_SECRET: Azure Application Secret (or) Service Pricipal Secret (or)  Cl
 AZURE_TENANT: Azure Tenant Id.
 #>
 az login --service-principal -u $env:AZURE_APP_ID -p $env:AZURE_APP_SECRET --tenant $env:AZURE_TENANT --output none
-Write-Host "Azure Login Success"
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "Azure Login Success"
+}
