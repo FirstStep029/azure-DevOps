@@ -18,7 +18,7 @@ stages:
   jobs:
   - template: jobs/main.yml
     parameters: 
-      project_name: ${{ project_name }}
+      project_name: "${{ project_name }}"
       environment: ${{ environment }}
       region: ${{ region }}
       app_id: "$(app_id)"
