@@ -21,9 +21,9 @@ steps:
       & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
     displayName: az-login
     env:
-      AZURE_APP_ID: ${{ app_id }}
-      AZURE_APP_SECRET: ${{ app_secret }}
-      AZURE_TENANT: ${{ tenant }}
+      AZURE_APP_ID: ${{ parameters.app_id }}
+      AZURE_APP_SECRET: ${{ parameters.app_secret }}
+      AZURE_TENANT: ${{ parameters.tenant }}
   
   - powershell: |
       & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
