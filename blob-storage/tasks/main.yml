@@ -16,12 +16,6 @@ parameters:
 - name: app_secret
   type: string
 
-variables:
-  - template: ../defaults/main.yml
-    parameters:
-      project_name: ${{ parameters.project_name }}
-      environment: ${{ parameters.environment }}
-
 steps:
   # Checkouts the Pipeline Running Repository
   - checkout: self
@@ -43,3 +37,8 @@ steps:
       resource-group: ${{ parameters.resource_group }}
       location: ${{ parameters.region }}
       sku: ${{ parameters.sku }}
+    variables:
+      - template: ../defaults/main.yml
+        parameters:
+          project_name: ${{ parameters.project_name }}
+          environment: ${{ parameters.environment }}
