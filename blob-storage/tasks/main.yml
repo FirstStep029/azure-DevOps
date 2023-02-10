@@ -5,12 +5,20 @@ parameters:
   type: string
 - name: region
   type: string
-- name: app_id
+# - name: app_id
+#   type: string
+# - name: app_secret
+#   type: string
+# - name: tenant
+#   type: string
+- name: sku
   type: string
-- name: app_secret
-  type: string
-- name: tenant
-  type: string
+
+variabels:
+  - template: ../defaulys/main.yml
+    parameters:
+      project_name: ${{ parameters.project_name }}
+      environment: ${{ parameters.environment }}
 
 steps:
   # Checkouts the Pipeline Running Repository
@@ -21,10 +29,15 @@ steps:
       & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
     displayName: az-login
     env:
-      AZURE_APP_ID: ${{ parameters.app_id }}
-      AZURE_APP_SECRET: ${{ parameters.app_secret }}
-      AZURE_TENANT: ${{ parameters.tenant }}
+      AZURE_APP_ID: $(app_id)
+      AZURE_APP_SECRET: $(app_secret)
+      AZURE_TENANT: $(tenant)
   
   - powershell: |
       & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
     displayName: create-blob-storage
+    env:
+      name: $(name) 
+      resource-group: $(resource_group)
+      location: ${{ parameters.region }}
+      sku: ${{ parameters.sku }}

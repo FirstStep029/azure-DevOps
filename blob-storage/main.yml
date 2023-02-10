@@ -3,12 +3,35 @@ trigger:
 
 parameters:
 - name: project_name
+  displayName: Project Name
   type: string
 - name: environment
+  displayName: Environment
   type: string
 - name: region
+  displayName: Region/Location
   type: string
   default: eastus2
+  values:
+    - eastus2
+    - eastus
+    - southindia
+    - westindia
+    - westus2
+    - westus3
+- name: sku
+  displayName: Unit Type
+  type: string
+  default: Standard_LRS
+  values:
+    - Premium_LRS
+    - Premium_ZRS
+    - Standard_GRS
+    - Standard_GZR
+    - Standard_LRS
+    - Standard_RAGRS
+    - Standard_RAGZRS
+    - Standard_ZRS
 
 pool: 
   vmImage: ubuntu-latest
@@ -21,6 +44,9 @@ stages:
       project_name: ${{ parameters.project_name }}
       environment: ${{ parameters.environment }}
       region: ${{ parameters.region }}
+      sku: ${{ parameters.sku }}
+    variables:
       app_id: "$(app_id)"
       app_secret: "$(app_secret)"
       tenant: "$(tenant)"
+      resource_group: "$(resource_group)"

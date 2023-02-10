@@ -3,12 +3,6 @@ parameters:
   type: string
 - name: environment
   type: string
-- name: region
-  type: string
-  default: eastus2
 
 # Defines Blob Srtorage Name
-name: $"sa{{ parameters.project_name }}{{ parameters.environment }}001"
-access-tier: Hot
-sku: Standard_RAGRS
-location: $"{{ parameters.region }}"
+name: $"sa{{ parameters.project_name }}blb{{ parameters.environment }}"

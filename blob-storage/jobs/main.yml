@@ -5,11 +5,13 @@ parameters:
   type: string
 - name: region
   type: string
-- name: app_id
-  type: string
-- name: app_secret
-  type: string
-- name: tenant
+# - name: app_id
+#   type: string
+# - name: app_secret
+#   type: string
+# - name: tenant
+#   type: string
+- name: sku
   type: string
 
 jobs:
@@ -23,6 +25,9 @@ jobs:
         project_name: ${{ parameters.project_name }}
         environment: ${{ parameters.environment }}
         region: ${{ parameters.region }}
-        app_id: ${{ parameters.app_id }}
-        app_secret: ${{ parameters.app_secret }}
-        tenant: ${{ parameters.tenant }}
+        sku: ${{ parameters.sku }}
+      variables:
+        app_id: "$(app_id)"
+        app_secret: "$(app_secret)"
+        tenant: "$(tenant)"
+        resource_group: "$(resource_group)"
