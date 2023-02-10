@@ -36,7 +36,7 @@ parameters:
     - Standard_ZRS
 
 variables:
-  - template: ../defaults/main.yml
+  - template: defaults/main.yml
     parameters:
       project_name: "$(project_name)"
       environment: ${{ parameters.environment }}
