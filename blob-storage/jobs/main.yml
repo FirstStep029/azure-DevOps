@@ -1,19 +1,25 @@
 parameters:
-# - name: project_name
-#   type: string
+- name: project_name
+  type: string
 - name: environment
   type: string
 - name: region
   type: string
-# - name: app_id
-#   type: string
-# - name: app_secret
-#   type: string
-# - name: tenant
-#   type: string
+- name: app_id
+  type: string
+- name: app_secret
+  type: string
+- name: tenant
+  type: string
 - name: sku
   type: string
-
+- name: resource_group
+  type: string
+- name: app_id
+  type: string
+- name: app_secret
+  type: string
+  
 jobs:
 - job: Job_1
   displayName: JOB_CREATE_BLOB_STORAGE
@@ -22,13 +28,11 @@ jobs:
   steps:
     - template: ../tasks/main.yml
       parameters: 
-        # project_name: ${{ parameters.project_name }}
         environment: ${{ parameters.environment }}
         region: ${{ parameters.region }}
         sku: ${{ parameters.sku }}
-      variables:
-        project_name: "$(project_name)"
-        app_id: "$(app_id)"
-        app_secret: "$(app_secret)"
-        tenant: "$(tenant)"
-        resource_group: "$(resource_group)"
+        project_name: "${{ parameters.project_name }}"
+        app_id: "${{ parameters.app_id }}"
+        app_secret: "${{ parameters.app_secret }}"
+        tenant: "${{ parameters.tenant }}"
+        resource_group: "${{ parameters.resource_group }}"

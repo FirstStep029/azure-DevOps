@@ -46,7 +46,6 @@ stages:
       environment: ${{ parameters.environment }}
       region: ${{ parameters.region }}
       sku: ${{ parameters.sku }}
-    variables:
       project_name: "$(project_name)"
       app_id: "$(app_id)"
       app_secret: "$(app_secret)"
