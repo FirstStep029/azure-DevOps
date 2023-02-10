@@ -1,6 +1,6 @@
 parameters:
-- name: project_name
-  type: string
+# - name: project_name
+#   type: string
 - name: environment
   type: string
 - name: region
@@ -22,11 +22,12 @@ jobs:
   steps:
     - template: ../tasks/main.yml
       parameters: 
-        project_name: ${{ parameters.project_name }}
+        # project_name: ${{ parameters.project_name }}
         environment: ${{ parameters.environment }}
         region: ${{ parameters.region }}
         sku: ${{ parameters.sku }}
       variables:
+        project_name: "$(project_name)"
         app_id: "$(app_id)"
         app_secret: "$(app_secret)"
         tenant: "$(tenant)"

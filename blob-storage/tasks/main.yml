@@ -1,6 +1,6 @@
 parameters:
-- name: project_name
-  type: string
+# - name: project_name
+#   type: string
 - name: environment
   type: string
 - name: region
@@ -17,7 +17,8 @@ parameters:
 variabels:
   - template: ../defaulys/main.yml
     parameters:
-      project_name: ${{ parameters.project_name }}
+      # project_name: ${{ parameters.project_name }}
+      project_name: "$(project_name)"
       environment: ${{ parameters.environment }}
 
 steps:

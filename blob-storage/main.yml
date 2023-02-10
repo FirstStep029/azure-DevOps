@@ -2,15 +2,12 @@ trigger:
 - none
 
 parameters:
-- name: project_name
-  displayName: Project Name
-  type: string
 - name: environment
   displayName: Environment
   type: string
   values:
     - Devtest
-    - UAT
+    - Uat
     - PreProd
     - Prod
 - name: region
@@ -46,11 +43,11 @@ stages:
   jobs:
   - template: jobs/main.yml
     parameters: 
-      project_name: ${{ parameters.project_name }}
       environment: ${{ parameters.environment }}
       region: ${{ parameters.region }}
       sku: ${{ parameters.sku }}
     variables:
+      project_name: "$(project_name)"
       app_id: "$(app_id)"
       app_secret: "$(app_secret)"
       tenant: "$(tenant)"
