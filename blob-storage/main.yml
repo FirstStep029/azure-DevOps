@@ -38,9 +38,9 @@ parameters:
 variables:
   - template: ../defaults/main.yml
     parameters:
-      project_name: ${{ parameters.project_name }}
+      project_name: ${{ project_name }}
       environment: ${{ parameters.environment }}
-      
+
 pool: 
   vmImage: ubuntu-latest
 
