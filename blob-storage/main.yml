@@ -8,6 +8,11 @@ parameters:
 - name: environment
   displayName: Environment
   type: string
+  values:
+    - Devtest
+    - UAT
+    - PreProd
+    - Prod
 - name: region
   displayName: Region/Location
   type: string
