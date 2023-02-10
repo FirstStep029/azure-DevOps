@@ -12,6 +12,7 @@ pool:
 
 parameters:
   - name: prm_object
+    type: object
     displayName: Objects
     default:
       foo: FOO
