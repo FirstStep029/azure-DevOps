@@ -16,7 +16,7 @@ parameters:
 - name: app_secret
   type: string
 
-variabels:
+variables:
   - template: ../defaulys/main.yml
     parameters:
       project_name: ${{ parameters.project_name }}
