@@ -1,1 +1,1 @@
-param($method)
+Write-Host $env:blob_name
