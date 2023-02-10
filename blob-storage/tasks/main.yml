@@ -5,10 +5,6 @@ parameters:
   type: string
 - name: region
   type: string
-- name: app_id
-  type: string
-- name: app_secret
-  type: string
 - name: tenant
   type: string
 - name: sku
