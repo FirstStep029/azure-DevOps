@@ -35,6 +35,12 @@ parameters:
     - Standard_RAGZRS
     - Standard_ZRS
 
+variables:
+  - template: ../defaults/main.yml
+    parameters:
+      project_name: ${{ parameters.project_name }}
+      environment: ${{ parameters.environment }}
+      
 pool: 
   vmImage: ubuntu-latest
 
