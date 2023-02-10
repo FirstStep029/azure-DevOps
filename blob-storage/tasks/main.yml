@@ -17,7 +17,7 @@ parameters:
   type: string
 
 variables:
-  - template: ../defaulys/main.yml
+  - template: ../defaults/main.yml
     parameters:
       project_name: ${{ parameters.project_name }}
       environment: ${{ parameters.environment }}
@@ -39,7 +39,7 @@ steps:
       & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
     displayName: create-blob-storage
     env:
-      name: $(name) 
+      name: $(blob_name) 
       resource-group: ${{ parameters.resource_group }}
       location: ${{ parameters.region }}
       sku: ${{ parameters.sku }}

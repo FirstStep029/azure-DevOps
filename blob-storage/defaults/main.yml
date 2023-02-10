@@ -5,4 +5,6 @@ parameters:
   type: string
 
 # Defines Blob Srtorage Name
-name: $"sa{{ parameters.project_name }}blb{{ parameters.environment }}"
+variables:
+  - name: blob_name
+    value: $"sa{{ parameters.project_name }}blb{{ parameters.environment }}"
