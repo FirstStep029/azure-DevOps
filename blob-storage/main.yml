@@ -26,7 +26,7 @@ parameters:
 - name: sku
   displayName: Replication Strategy
   type: string
-  default: Standard_LRS
+  default: ''
   values:
     - Premium_LRS
     - Premium_ZRS
@@ -54,10 +54,17 @@ parameters:
 
 # Default Variables Definitiion for the job
 variables:
+  - access-tier: ''
+  - tls-version: ''
+  - public-network-access: ''
   - template: defaults.yml
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
+      sku: ${{ parameters.sku }}
+      # access-tier: $(access-tier)
+      # tls-version: $(tls-version)
+      # public-access-network: $(public-access-network) 
 
 # Job Stages Definition
 stages:
@@ -86,7 +93,7 @@ stages:
                 & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
               displayName: create-blob-storage
               env:
-                name: $(blob_name)
-                resource-group: $(resource_group)
-                location: ${{ parameters.region }}
-                sku: ${{ parameters.sku }}
+                NAME: $(blob_name)
+                RESOURCE-GROUP: $(resource_group)
+                LOCATION: ${{ parameters.region }}
+                SKU: $(sku)
