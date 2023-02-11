@@ -54,7 +54,7 @@ parameters:
 
 # VM-Pool Selection
 pool:
-  vmImage: "${{ parameters.pool }}"
+  vmImage: ${{ parameters.pool }}
 
 # Default Variables Definitiion for the job
 variables:
