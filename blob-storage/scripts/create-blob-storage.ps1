@@ -1,1 +1,1 @@
-Write-Host "BLOB-NAME: $($env:name)"
+Write-Host "BLOB-NAME: $($env:NAME)\nSKU: $($env:SKU)"
