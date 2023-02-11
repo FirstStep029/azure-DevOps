@@ -56,7 +56,7 @@ parameters:
 variables:
   - template: defaults.yml
     parameters:
-      project_name: "${{ parameters.project_name }}"
+      project_name: "$(project_name)"
       environment: ${{ parameters.environment }}
 
 # Job Stages Definition
@@ -87,6 +87,6 @@ stages:
               displayName: create-blob-storage
               env:
                 name: $(blob_name)
-                resource-group: ${{ parameters.resource_group }}
+                resource-group: $(resource_group)
                 location: ${{ parameters.region }}
                 sku: ${{ parameters.sku }}
