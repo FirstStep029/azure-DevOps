@@ -26,9 +26,8 @@ parameters:
 - name: sku
   displayName: Replication Strategy
   type: string
-  default: ''
+  default: Standard_RAGRS
   values:
-    - ''
     - Premium_LRS
     - Premium_ZRS
     - Standard_GRS
@@ -62,7 +61,7 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      sku: ${{ parameters.sku }}
+      access-tier: $(access-tier)
       # access-tier: $(access-tier)
       # tls-version: $(tls-version)
       # public-access-network: $(public-access-network) 
