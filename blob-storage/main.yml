@@ -1,6 +1,8 @@
+# Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
 - none
 
+# Parameters Initialization for the job
 parameters:
 - name: environment
   displayName: Environment
@@ -34,20 +36,59 @@ parameters:
     - Standard_RAGRS
     - Standard_RAGZRS
     - Standard_ZRS
+- name: stage
+  displayName: Stage
+  type: string
+  default: ALL
+  values:
+    - ALL
+    - STORAGE-ACCOUNT-CREATION
+    - STORAGE-ACCOUNT-DELETION
+- name: pool
+  displayName: VM-Pool
+  type: string
+  default: ubuntu-latest
+  values:
+    - ubuntu-latest
+    - windows-latest
 
-pool: 
-  vmImage: ubuntu-latest
+# VM-Pool Selection
+pool:
+  vmImage: "${{ parameters.pool }}"
 
-stages:
-- stage: STG_CREATE_BLOB_STORAGE
-  jobs:
-  - template: jobs/main.yml
-    parameters: 
+# Default Variables Definitiion for the job
+variables:
+  - template: defaults.yml
+    parameters:
+      project_name: "${{ parameters.project_name }}"
       environment: ${{ parameters.environment }}
-      region: ${{ parameters.region }}
-      sku: ${{ parameters.sku }}
-      project_name: "$(project_name)"
-      app_id: "$(app_id)"
-      app_secret: "$(app_secret)"
-      tenant: "$(tenant)"
-      resource_group: "$(resource_group)"
+
+# Job Stages Definition
+stages:
+  # Storage Account Creation
+  stage: CREATE_STORAGE_ACCOUNT
+  displayName: "STAGE - STORAGE ACCOUNT CREATION"
+  condition: or(eq('${{ parameters.stage}}', 'ALL'), eq('${{ parameters.stage}}', 'STORAGE-ACCOUNT-CREATION'))
+  jobs:
+    - job: job_1
+      displayName: "JOB - STORAGE ACCOUNT CREATION"
+      steps:
+          - checkout: self
+            clean: true
+          
+          - powershell: |
+              & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
+            displayName: az-login
+            env:
+              AZURE_APP_ID: $(app_id)
+              AZURE_APP_SECRET: $(app_secret)
+              AZURE_TENANT: $(tenant)
+
+          - powershell: |
+              & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
+            displayName: create-blob-storage
+            env:
+              name: $(blob_name)
+              resource-group: ${{ parameters.resource_group }}
+              location: ${{ parameters.region }}
+              sku: ${{ parameters.sku }}

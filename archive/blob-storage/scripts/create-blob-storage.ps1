@@ -1,0 +1,1 @@
+Write-Host $env:blob_name

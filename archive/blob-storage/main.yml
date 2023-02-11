@@ -1,0 +1,53 @@
+trigger:
+- none
+
+parameters:
+- name: environment
+  displayName: Environment
+  type: string
+  values:
+    - Devtest
+    - Uat
+    - PreProd
+    - Prod
+- name: region
+  displayName: Region/Location
+  type: string
+  default: eastus2
+  values:
+    - eastus2
+    - eastus
+    - southindia
+    - westindia
+    - westus2
+    - westus3
+- name: sku
+  displayName: Replication Strategy
+  type: string
+  default: Standard_LRS
+  values:
+    - Premium_LRS
+    - Premium_ZRS
+    - Standard_GRS
+    - Standard_GZR
+    - Standard_LRS
+    - Standard_RAGRS
+    - Standard_RAGZRS
+    - Standard_ZRS
+
+pool: 
+  vmImage: ubuntu-latest
+
+stages:
+- stage: STG_CREATE_BLOB_STORAGE
+  jobs:
+  - template: jobs/main.yml
+    parameters: 
+      environment: ${{ parameters.environment }}
+      region: ${{ parameters.region }}
+      sku: ${{ parameters.sku }}
+      project_name: "$(project_name)"
+      app_id: "$(app_id)"
+      app_secret: "$(app_secret)"
+      tenant: "$(tenant)"
+      resource_group: "$(resource_group)"
