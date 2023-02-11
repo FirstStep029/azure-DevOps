@@ -16,6 +16,12 @@ parameters:
 - name: app_secret
   type: string
 
+variables:
+  - template: defaults/main.yml
+    parameters:
+      project_name: "${{ parameters.project_name }}"
+      environment: ${{ parameters.environment }}
+
 steps:
   # Checkouts the Pipeline Running Repository
   - checkout: self

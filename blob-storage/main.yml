@@ -22,7 +22,7 @@ parameters:
     - westus2
     - westus3
 - name: sku
-  displayName: Unit Type
+  displayName: Replication Strategy
   type: string
   default: Standard_LRS
   values:
@@ -34,12 +34,6 @@ parameters:
     - Standard_RAGRS
     - Standard_RAGZRS
     - Standard_ZRS
-
-variables:
-  - template: defaults/main.yml
-    parameters:
-      project_name: "$(project_name)"
-      environment: ${{ parameters.environment }}
 
 pool: 
   vmImage: ubuntu-latest
