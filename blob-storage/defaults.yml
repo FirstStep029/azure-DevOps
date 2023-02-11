@@ -7,4 +7,4 @@ parameters:
 # Defines Blob Srtorage Name
 variables:
   - name: blob_name
-    value: $"sa{{ parameters.project_name }}blb{{ parameters.environment }}"
+    value: "sa${{ parameters.project_name }}blb${{ parameters.environment }}"
