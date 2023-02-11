@@ -54,14 +54,14 @@ parameters:
 
 # Default Variables Definitiion for the job
 variables:
-  - access-tier: ''
-  - tls-version: ''
-  - public-network-access: ''
+  - access_tier: ''
+  - tls_version: ''
+  - public_network_access: ''
   - template: defaults.yml
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      access-tier: $(access-tier)
+      access_tier: $(access_tier)
       # access-tier: $(access-tier)
       # tls-version: $(tls-version)
       # public-access-network: $(public-access-network) 
