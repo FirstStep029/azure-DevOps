@@ -1,1 +1,1 @@
-Write-Host $env:blob_name
+Write-Host "BLOB-NAME: $($env:blob_name)"
