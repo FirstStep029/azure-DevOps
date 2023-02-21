@@ -48,8 +48,8 @@ parameters:
   default: ALL
   values:
     - ALL
-    - STORAGE-ACCOUNT-CREATION
-    - STORAGE-ACCOUNT-DELETION
+    - CREATE-STORAGE-ACCOUNT
+    - DROP-STORAGE-ACCOUNT
 - name: pool
   displayName: VM-Pool
   type: string
@@ -72,7 +72,7 @@ stages:
     displayName: "STAGE - STORAGE ACCOUNT CREATION"
     pool:
       vmImage: ${{ parameters.pool }}
-    condition: or(eq('${{ parameters.stage}}', 'ALL'), eq('${{ parameters.stage}}', 'STORAGE-ACCOUNT-CREATION'))
+    condition: or(eq('${{ parameters.stage }}', 'ALL'), eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT'))
     jobs:
       - job: job_1
         displayName: "JOB - STORAGE ACCOUNT CREATION"
