@@ -12,4 +12,4 @@ if($name_exists.nameAvailable) {
 }
 
 # Create Blob Storage Account
-az storage account create --name $env:NAME.ToLower() --resource-group $env:RESOURCE_GROUP --location $env:LOCATION --access_tier $env:ACCESS_TIER --sku $env:SKU
+az storage account create --name $env:NAME.ToLower() --resource-group $env:RESOURCE_GROUP --location $env:LOCATION --access-tier $env:ACCESS_TIER --sku $env:SKU
