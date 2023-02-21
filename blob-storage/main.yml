@@ -98,10 +98,10 @@ stages:
                 NAME: $(blob_name)
                 RESOURCE_GROUP: $(resource_group)
 
-              # Logout Azure Session
-              - powershell: |
-                  & $(build.sourcesDirectory)/azure/logout.ps1
-                displayName: az-logout
+            # Logout Azure Session
+            - powershell: |
+                & $(build.sourcesDirectory)/azure/logout.ps1
+              displayName: az-logout
 
       - job: create_storage
         displayName: "JOB - CREATE STORAGE ACCOUNT"
