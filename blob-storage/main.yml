@@ -96,7 +96,7 @@ stages:
               displayName: create-blob-storage
               env:
                 NAME: $(blob_name)
-                RESOURCE-GROUP: $(resource_group)
+                RESOURCE_GROUP: $(resource_group)
                 LOCATION: ${{ parameters.region }}
                 SKU: ${{ parameters.sku }}
                 ACCESS_TIER: $(access_tier)
