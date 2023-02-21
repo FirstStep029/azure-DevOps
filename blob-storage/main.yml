@@ -64,6 +64,11 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
+      ${{ if ne(variables['sku'], '') }}:
+        sku: $(sku)
+      ${{ if eq(variables['sku'], '') }}:
+        sku: ''
+
 
 # Job Stages Definition
 stages:
