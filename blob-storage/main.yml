@@ -29,19 +29,19 @@ parameters:
     - westindia
     - westus2
     - westus3
-- name: sku
-  displayName: Replication Strategy
-  type: string
-  default: Standard_RAGRS
-  values:
-    - Premium_LRS
-    - Premium_ZRS
-    - Standard_GRS
-    - Standard_GZR
-    - Standard_LRS
-    - Standard_RAGRS
-    - Standard_RAGZRS
-    - Standard_ZRS
+# - name: sku
+#   displayName: Replication Strategy
+#   type: string
+#   default: Standard_RAGRS
+#   values:
+#     - Premium_LRS
+#     - Premium_ZRS
+#     - Standard_GRS
+#     - Standard_GZR
+#     - Standard_LRS
+#     - Standard_RAGRS
+#     - Standard_RAGZRS
+#     - Standard_ZRS
 - name: stage
   displayName: Stage
   type: string
@@ -129,8 +129,11 @@ stages:
                 NAME: $(blob_name)
                 RESOURCE_GROUP: $(resource_group)
                 LOCATION: ${{ parameters.region }}
-                SKU: ${{ parameters.sku }}
+                SKU: $(sku)
                 ACCESS_TIER: $(access_tier)
+                TLS_VERSION: $(tls_version)
+                PNA: $(public_network_access)
+                KIND: $(kind)
             
             # Logout Azure Session
             - powershell: |

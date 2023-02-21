@@ -14,7 +14,7 @@ if($name_exists.nameAvailable) {
 }
 
 # Create Blob Storage Account
-az storage account create --name $blob_name --resource-group $env:RESOURCE_GROUP --location $env:LOCATION --access-tier $env:ACCESS_TIER --sku $env:SKU --output none
+az storage account create --name $blob_name --resource-group $env:RESOURCE_GROUP --location $env:LOCATION --access-tier $env:ACCESS_TIER --sku $env:SKU --min-tls-version $env:TLS_VERSION --public-network-access $env:PNA --kind $env:KIND --output none
 
 # az storage account create $arguments
 if ($LASTEXITCODE -eq 0) {

@@ -1,23 +1,17 @@
 parameters:
 - name: project_name
 - name: environment
-# - name: access_tier
-# - name: tls-version
-# - name: public-access-network
 
 # Defines Blob Srtorage Name
 variables:
   - name: blob_name
     value: "sa${{ parameters.project_name }}blb${{ parameters.environment }}"
   - name: access_tier
-    value: "Hot"
-  #  ${{ if ne(parameters.access_tier, '')}}:
-  #    value: ${{ parameters.access_tier }}
-  #  ${{ if eq(parameters.access_tier, '')}}:
-      
-  # - name: tls-version
-  #   value: TLS1_2
-  # - name: public-network-access
-  #   value: Enabled
-  # - name: sku
-  #   value: Standard_RAGRS
+    value: Hot
+  - name: tls_version
+    value: TLS1_2
+  - name: public_network_access
+    value: Disabled
+  - name: kind
+    value: StorageV2
+  - 
