@@ -1,3 +1,10 @@
+Description: >
+  This Pipeline Allows you to peform below listed operations full hand.
+  List of Operations:
+    - STORAGE ACCOUNT CREATION
+    - STORAGE ACCOUNT DELETION
+    - ALL OF THE ABOVE
+
 # Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
 - none
@@ -8,10 +15,10 @@ parameters:
   displayName: Environment
   type: string
   values:
-    - Devtest
-    - Uat
-    - PreProd
-    - Prod
+    - devtest
+    - uat
+    - preprod
+    - prod
 - name: region
   displayName: Region/Location
   type: string
@@ -54,21 +61,14 @@ parameters:
 
 # Default Variables Definitiion for the job
 variables:
-  - access_tier: ''
-  - tls_version: ''
-  - public_network_access: ''
   - template: defaults.yml
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      access_tier: $(access_tier)
-      # access-tier: $(access-tier)
-      # tls-version: $(tls-version)
-      # public-access-network: $(public-access-network) 
 
 # Job Stages Definition
 stages:
-  # Storage Account Creation-
+  # Storage Account Creation
   - stage: CREATE_STORAGE_ACCOUNT
     displayName: "STAGE - STORAGE ACCOUNT CREATION"
     pool:
@@ -78,9 +78,11 @@ stages:
       - job: job_1
         displayName: "JOB - STORAGE ACCOUNT CREATION"
         steps:
+            # Checkout Running Repository
             - checkout: self
               clean: true
             
+            # Azure Login Task
             - powershell: |
                 & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
               displayName: az-login
@@ -88,7 +90,8 @@ stages:
                 AZURE_APP_ID: $(app_id)
                 AZURE_APP_SECRET: $(app_secret)
                 AZURE_TENANT: $(tenant)
-
+            
+            # Blob Storage Creation
             - powershell: |
                 & $(build.sourcesDirectory)/blob-storage/scripts/create-blob-storage.ps1
               displayName: create-blob-storage
@@ -96,4 +99,5 @@ stages:
                 NAME: $(blob_name)
                 RESOURCE-GROUP: $(resource_group)
                 LOCATION: ${{ parameters.region }}
-                SKU: $(sku)
+                SKU: ${{ parameters.sku }}
+                ACCESS_TIER: $(access_tier)

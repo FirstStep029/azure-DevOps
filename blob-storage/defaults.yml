@@ -1,7 +1,7 @@
 parameters:
 - name: project_name
 - name: environment
-- name: access_tier
+# - name: access_tier
 # - name: tls-version
 # - name: public-access-network
 
@@ -10,10 +10,11 @@ variables:
   - name: blob_name
     value: "sa${{ parameters.project_name }}blb${{ parameters.environment }}"
   - name: access_tier
-    ${{ if ne(parameters.access_tier, '')}}:
-      value: ${{ parameters.access_tier }}
-    ${{ if eq(parameters.access_tier, '')}}:
-      value: "Hot"
+    value: "Hot"
+  #  ${{ if ne(parameters.access_tier, '')}}:
+  #    value: ${{ parameters.access_tier }}
+  #  ${{ if eq(parameters.access_tier, '')}}:
+      
   # - name: tls-version
   #   value: TLS1_2
   # - name: public-network-access
