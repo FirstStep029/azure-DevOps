@@ -1,8 +1,8 @@
 #  This Pipeline Allows you to peform below listed operations full hand.
-#  List of Operations:
-#    - STORAGE ACCOUNT CREATION
-#    - STORAGE ACCOUNT DELETION
-#    - ALL OF THE ABOVE
+#  List of operations:
+#    - Storage Account Creation [CREATE-STORAGE-ACCOUNT]
+#    - Storage Account Deletion [DROP-STORAGE-ACCOUNT]
+#    - Full Re-Create [DROP-&-RECREATE]
 
 # Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
@@ -14,7 +14,7 @@ parameters:
   displayName: Environment
   type: string
   values:
-    - DEVTEST
+    - DEV-TEST
     - UAT
     - PREPROD
     - PROD
@@ -47,7 +47,7 @@ parameters:
   type: string
   default: ALL
   values:
-    - DROP-AND-CREATE
+    - DROP-&-CREATE
     - CREATE-STORAGE-ACCOUNT
     - DROP-STORAGE-ACCOUNT
 - name: pool
@@ -72,7 +72,7 @@ stages:
     displayName: "STAGE - STORAGE ACCOUNT CREATION"
     pool:
       vmImage: ${{ parameters.pool }}
-    condition: or(eq('${{ parameters.stage }}', 'DROP-AND-CREATE'), eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT'))
+    condition: or(eq('${{ parameters.stage }}', 'DROP-&-CREATE'), eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT'))
     jobs:
       - job: job_1
         displayName: "JOB - STORAGE ACCOUNT CREATION"
