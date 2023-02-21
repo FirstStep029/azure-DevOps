@@ -14,10 +14,10 @@ parameters:
   displayName: Environment
   type: string
   values:
-    - devtest
-    - uat
-    - preprod
-    - prod
+    - DEVTEST
+    - UAT
+    - PREPROD
+    - PROD
 - name: region
   displayName: Region/Location
   type: string

@@ -5,11 +5,11 @@
 $name_exists = az storage account check-name --name $env:NAME.ToLower() | ConvertFrom-Json
 
 if($name_exists.nameAvailable) {
-    Write-Host "Name '$($blob_prop.'name')' Available."
+    Write-Host "Name '$($env:NAME.ToLower())' Available."
 } else {
-    Write-Host "Name '$($blob_prop.'name')' Already Taken."
+    Write-Host "Name '$($env:NAME.ToLower())' Already Taken."
     exit 1
 }
 
 # Create Blob Storage Account
-# az storage account create --name $blob_prop.'name' --resource-group $blob_prop.'resource-group' --location $blob_prop.'region'
+az storage account create --name $env:NAME.ToLower() --resource-group $env:RESOURCE_GROUP --location $env:LOCATION --access_tier $env:ACCESS_TIER --sku $env:SKU
