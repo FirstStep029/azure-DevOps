@@ -105,7 +105,7 @@ stages:
 
       - job: create_storage
         displayName: "JOB - CREATE STORAGE ACCOUNT"
-        dependsOn: 
+        dependsOn: drop_storage
         condition: and(in(dependencies.drop_storage.result, 'Succeeded', 'Skipped'), or(eq('${{ parameters.stage }}', 'DROP & CREATE'), eq('${{ parameters.stage }}', 'CREATE STORAGE ACCOUNT')))
         steps:
             # Checkout Running Repository
