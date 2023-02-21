@@ -1,9 +1,8 @@
-Description: >
-  This Pipeline Allows you to peform below listed operations full hand.
-  List of Operations:
-    - STORAGE ACCOUNT CREATION
-    - STORAGE ACCOUNT DELETION
-    - ALL OF THE ABOVE
+#  This Pipeline Allows you to peform below listed operations full hand.
+#  List of Operations:
+#    - STORAGE ACCOUNT CREATION
+#    - STORAGE ACCOUNT DELETION
+#    - ALL OF THE ABOVE
 
 # Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
