@@ -9,5 +9,5 @@ if($name_exists.nameAvailable) {
     Write-Host "'$($blob_name)' Does Not Exists, Skipping."
 } else {
     Write-Host "'$($blob_name)' Available & Dropping."
-    az storage account delete --name $blob_name --resource-group $env:RESOURCE_GROUP    
+    az storage account delete --name $blob_name --resource-group $env:RESOURCE_GROUP --yes    
 }
