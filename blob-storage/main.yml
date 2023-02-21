@@ -47,7 +47,7 @@ parameters:
   type: string
   default: ALL
   values:
-    - ALL
+    - DROP-AND-CREATE
     - CREATE-STORAGE-ACCOUNT
     - DROP-STORAGE-ACCOUNT
 - name: pool
@@ -72,7 +72,7 @@ stages:
     displayName: "STAGE - STORAGE ACCOUNT CREATION"
     pool:
       vmImage: ${{ parameters.pool }}
-    condition: or(eq('${{ parameters.stage }}', 'ALL'), eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT'))
+    condition: or(eq('${{ parameters.stage }}', 'DROP-AND-CREATE'), eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT'))
     jobs:
       - job: job_1
         displayName: "JOB - STORAGE ACCOUNT CREATION"
@@ -81,7 +81,7 @@ stages:
             - checkout: self
               clean: true
             
-            # Azure Login Task
+            # Login Azure Session
             - powershell: |
                 & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
               displayName: az-login
@@ -100,3 +100,9 @@ stages:
                 LOCATION: ${{ parameters.region }}
                 SKU: ${{ parameters.sku }}
                 ACCESS_TIER: $(access_tier)
+            
+            # Logout Azure Session
+            - powershell: |
+                & $(build.sourcesDirectory)/azure/logout.ps1
+              displayName: az-logout
+              condition: eq('${{ parameters.stage }}', 'CREATE-STORAGE-ACCOUNT')

@@ -20,9 +20,3 @@ az storage account create --name $blob_name --resource-group $env:RESOURCE_GROUP
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Blob Creation Success in RG: $($env:LOCATION) with Name: '$($blob_name)'"
 }
-
-# Logout of session
-az logout
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "Logout Session Successfull."
-}
