@@ -77,31 +77,31 @@ stages:
         displayName: "JOB - DROP STORAGE ACCOUNT"
         condition: or(eq('${{ parameters.stage }}', 'DROP & CREATE'), eq('${{ parameters.stage }}', 'DROP STORAGE ACCOUNT'))
         steps:
-          # Checkout Running Repository
-          - checkout: self
-            clean: true
-          
-          # Login Azure Session
-          - powershell: |
-              & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
-            displayName: az-login
-            env:
-              AZURE_APP_ID: $(app_id)
-              AZURE_APP_SECRET: $(app_secret)
-              AZURE_TENANT: $(tenant)
-          
-          # Drop Storage Account
-          - powershell: |
-              & $(build.sourcesDirectory)/blob-storage/scripts/drop-blob-storage.ps1
-            displayName: drop-blob-storage
-            env:
-              NAME: $(blob_name)
-              RESOURCE_GROUP: $(resource_group)
-
-            # Logout Azure Session
+            # Checkout Running Repository
+            - checkout: self
+              clean: true
+            
+            # Login Azure Session
             - powershell: |
-                & $(build.sourcesDirectory)/azure/logout.ps1
-              displayName: az-logout
+                & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
+              displayName: az-login
+              env:
+                AZURE_APP_ID: $(app_id)
+                AZURE_APP_SECRET: $(app_secret)
+                AZURE_TENANT: $(tenant)
+            
+            # Drop Storage Account
+            - powershell: |
+                & $(build.sourcesDirectory)/blob-storage/scripts/drop-blob-storage.ps1
+              displayName: drop-blob-storage
+              env:
+                NAME: $(blob_name)
+                RESOURCE_GROUP: $(resource_group)
+
+              # Logout Azure Session
+              - powershell: |
+                  & $(build.sourcesDirectory)/azure/logout.ps1
+                displayName: az-logout
 
       - job: create_storage
         displayName: "JOB - CREATE STORAGE ACCOUNT"
