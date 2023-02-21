@@ -3,7 +3,6 @@ $blob_name = $env:NAME.ToLower() -replace '\W',''
 
 # Check Storage Name is Valid
 $name_exists = az storage account check-name --name $blob_name | ConvertFrom-Json
-Write-Host $name_exists
 
 if($name_exists.nameAvailable) {
     Write-Host "'$($blob_name)' Does Not Exists, Skipping."
