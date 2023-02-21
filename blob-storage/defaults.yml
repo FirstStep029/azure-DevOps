@@ -14,4 +14,3 @@ variables:
     value: Disabled
   - name: kind
     value: StorageV2
-  - 
