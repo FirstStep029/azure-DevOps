@@ -17,8 +17,6 @@ variables:
     value: StorageV2
   - name: var_sku
     ${{ if ne(parameters.sku, '') }}:
-      value: "NOT-EMPTY"
+      value: ${{ parameters.sku }}
     ${{ if eq(parameters.sku, '') }}:
-      value: "EMPTY"
-      # value: ${{ parameters.prm_sku }} 
-    # value: "${{ parameters.prm_sku }}"
+      value: "Standard_RAGRS"
