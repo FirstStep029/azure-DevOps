@@ -17,6 +17,6 @@ variables:
     value: StorageV2
   - name: sku
     ${{ if not(parameters.sku) }}:
-      value: ${{ parameters.sku }}
-    ${{ if parameters.sku }}:
       value: Standard_RAGRS
+    ${{ if parameters.sku }}:
+      value: ${{ parameters.sku }} 
