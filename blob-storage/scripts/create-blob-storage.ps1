@@ -1,4 +1,7 @@
-Write-Host "BLOB-NAME: $($env:NAME) `nSKU: $($env:SKU) `nRG: $($env:RESOURCE_GROUP) `nLOCATION: $($env:LOCATION) `nACCESS_TIER: $($env:ACCESS_TIER)"
+if ($env:DEBUG) { 
+    Write-Host "BLOB-NAME: $($env:NAME) `nRG: $($env:RESOURCE_GROUP) `nLOCATION: $($env:LOCATION) `nACCESS_TIER: $($env:ACCESS_TIER) `nSKU: $($env:SKU) `nTLS_VERSION: $($env:TLS_VERSION) `nPNA: $($env:PNA) `nKIND: $($env:KIND)"
+}
+
 
 # create name with remove Special Characters and convert to lower case
 $blob_name = $env:NAME.ToLower() -replace '\W',''
@@ -19,4 +22,9 @@ az storage account create --name $blob_name --resource-group $env:RESOURCE_GROUP
 # az storage account create $arguments
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Blob Creation Success in RG: $($env:LOCATION) with Name: '$($blob_name)'"
+}
+
+if ($env:DEBUG) {
+    Write-Host "Printing Storage Account Properties"
+    az storage account show --resource-group $env:RESOURCE_GROUP --name $blob_name
 }

@@ -159,6 +159,7 @@ stages:
                 ACCESS_TIER: $(var_access_tier)
                 PNA: $(var_pna)
                 KIND: $(var_kind)
+                DEBUG: $(System.Debug)
                             
             # Logout Azure Session
             - powershell: |
