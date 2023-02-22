@@ -119,9 +119,9 @@ stages:
             
             # Testing
             - powershell: |
-                Write-Host "BLOB-NAME: $($env:blob_name) `nSKU: $($env:sku)"
+                Write-Host "BLOB-NAME: $(blob_name) `nSKU: $(sku)"
               displayName: Print Parameters & Variables
-              
+
             # # Login Azure Session
             # - powershell: |
             #     & $(build.sourcesDirectory)/azure/login.ps1 -method "SP"
@@ -145,7 +145,7 @@ stages:
             #     PNA: $(public_network_access)
             #     KIND: $(kind)
             
-            # Logout Azure Session
-            - powershell: |
-                & $(build.sourcesDirectory)/azure/logout.ps1
-              displayName: az-logout
+            # # Logout Azure Session
+            # - powershell: |
+            #     & $(build.sourcesDirectory)/azure/logout.ps1
+            #   displayName: az-logout
