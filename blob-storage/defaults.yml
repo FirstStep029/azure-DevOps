@@ -1,7 +1,6 @@
 parameters:
 - name: project_name
 - name: environment
-- name: sku
 
 # Defines Blob Srtorage Name
 variables:
