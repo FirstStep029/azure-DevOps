@@ -53,7 +53,7 @@ variables:
     ${{ if ne(variables.blob_name, '') }}:
       value: $(blob_name)
     ${{ if eq(variables.blob_name, '') }}:
-      value: sa${{ parameters.project_name }}blb${{ parameters.environment }}
+      value: sa$(project_name)blb${{ parameters.environment }}
   
   # Type of Access Tier
   - name: var_access_tier
