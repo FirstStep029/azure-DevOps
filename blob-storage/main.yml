@@ -61,28 +61,28 @@ variables:
     var_access_tier: Hot
   
   # Type of Transport Layer Security Version
-  - ${{ if ne(variables.tls_version, '') }}:
-      var_tls_version: $(tls_version)
-    ${{ if eq(variables.tls_version, '') }}:
-      var_tls_version: TLS1_2
+  ${{ if ne(variables.tls_version, '') }}:
+    var_tls_version: $(tls_version)
+  ${{ if eq(variables.tls_version, '') }}:
+    var_tls_version: TLS1_2
   
   # Type of Public Network Access
-  - ${{ if ne(variables.public_network_access, '') }}:
-      var_pna: $(public_network_access)
-    ${{ if eq(variables.public_network_access, '') }}:
-      var_pna: Disabled
+  ${{ if ne(variables.public_network_access, '') }}:
+    var_pna: $(public_network_access)
+  ${{ if eq(variables.public_network_access, '') }}:
+    var_pna: Disabled
   
   # Type of Kind
-  - ${{ if ne(variables.kind, '') }}:
-      var_kind: $(kind)
-    ${{ if eq(variables.kind, '') }}:
-      var_kind: StorageV2  
+  ${{ if ne(variables.kind, '') }}:
+    var_kind: $(kind)
+  ${{ if eq(variables.kind, '') }}:
+    var_kind: StorageV2  
   
   # Type of SKU
-  - ${{ if ne(variables.sku, '') }}:
-      var_sku: $(sku)
-    ${{ if eq(variables.sku, '') }}:
-      var_sku: Standard_RAGRS
+  ${{ if ne(variables.sku, '') }}:
+    var_sku: $(sku)
+  ${{ if eq(variables.sku, '') }}:
+    var_sku: Standard_RAGRS
 
 # Job Stages Definition
 stages:
