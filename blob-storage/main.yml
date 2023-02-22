@@ -51,44 +51,44 @@ variables:
   # Name of the blob
   - name: var_blob_name
     ${{ if ne(variables.blob_name, '') }}:
-      NAME: $(blob_name)
+      value: $(blob_name)
     ${{ if eq(variables.blob_name, '') }}:
-      NAME: sa${{ parameters.project_name }}blb${{ parameters.environment }}
+      value: sa${{ parameters.project_name }}blb${{ parameters.environment }}
   
   # Type of Access Tier
   - name: var_access_tier
     ${{ if ne(variables.access_tier, '') }}:
-      NAME: $(access_tier)
+      value: $(access_tier)
     ${{ if eq(variables.access_tier, '') }}:
-      NAME: Hot
+      value: Hot
   
   # Type of Transport Layer Security Version
   - name: var_tls_version
     ${{ if ne(variables.tls_version, '') }}:
-      NAME: $(tls_version)
+      value: $(tls_version)
     ${{ if eq(variables.tls_version, '') }}:
-      NAME: TLS1_2
+      value: TLS1_2
   
   # Type of Public Network Access
   - name: var_pna
     ${{ if ne(variables.public_network_access, '') }}:
-      NAME: $(public_network_access)
+      value: $(public_network_access)
     ${{ if eq(variables.public_network_access, '') }}:
-      NAME: Disabled
+      value: Disabled
   
   # Type of Kind
   - name: var_kind
     ${{ if ne(variables.kind, '') }}:
-      NAME: $(kind)
+      value: $(kind)
     ${{ if eq(variables.kind, '') }}:
-      NAME: StorageV2  
+      value: StorageV2  
   
   # Type of SKU
   - name: var_sku
     ${{ if ne(variables.sku, '') }}:
-      NAME: $(sku)
+      value: $(sku)
     ${{ if eq(variables.sku, '') }}:
-      NAME: Standard_RAGRS
+      value: Standard_RAGRS
 
 # Job Stages Definition
 stages:
