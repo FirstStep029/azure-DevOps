@@ -1,7 +1,7 @@
 parameters:
 - name: project_name
 - name: environment
-- name: prm_sku
+# - name: prm_sku
 
 # Defines Blob Srtorage Name
 variables:
