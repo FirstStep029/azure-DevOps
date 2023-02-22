@@ -4,18 +4,15 @@ parameters:
 
 # Defines Blob Srtorage Name
 variables:
-  - name: blob_name
+  - name: var_blob_name
     value: "sa${{ parameters.project_name }}blb${{ parameters.environment }}"
-  - name: access_tier
+  - name: var_access_tier
     value: Hot
-  - name: tls_version
+  - name: var_tls_version
     value: TLS1_2
-  - name: public_network_access
+  - name: var_public_network_access
     value: Disabled
-  - name: kind
+  - name: var_kind
     value: StorageV2
   - name: var_sku
-    # ${{ if ne(parameters.sku, '') }}:
-    #   value: ${{ parameters.sku }}
-    # ${{ if eq(parameters.sku, '') }}:
     value: "Standard_RAGRS"
