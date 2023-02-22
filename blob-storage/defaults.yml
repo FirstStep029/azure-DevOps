@@ -16,7 +16,7 @@ variables:
   - name: kind
     value: StorageV2
   - name: var_sku
-    ${{ if ne(parameters.sku, '') }}:
-      value: ${{ parameters.sku }}
-    ${{ if eq(parameters.sku, '') }}:
-      value: "Standard_RAGRS"
+    # ${{ if ne(parameters.sku, '') }}:
+    #   value: ${{ parameters.sku }}
+    # ${{ if eq(parameters.sku, '') }}:
+    value: "Standard_RAGRS"

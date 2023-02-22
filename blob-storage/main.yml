@@ -65,7 +65,7 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      sku: ${{ variables.sku }}
+      # sku: ${{ variables.sku }}
       # sku: $(sku)
       # ${{ ne(variables['sku'], '') }}:
       #   prm_sku: "NON-EMPTY"
@@ -123,6 +123,11 @@ stages:
             - powershell: |
                 Write-Host "BLOB-NAME: $(blob_name) `nSKU: ${{ variables.var_sku }}"
               displayName: Print Parameters & Variables
+              env:
+                ${{ if ne(variables.sku, '') }}:
+                  SKU: $(sku)
+                ${{ if eq(variables.sku, '') }}:
+                  SKU: $(var_sku)
 
             # # Login Azure Session
             # - powershell: |
