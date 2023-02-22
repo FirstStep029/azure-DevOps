@@ -49,16 +49,16 @@ parameters:
 # Variable Definition for the job
 variables:
   # Name of the blob
-  - ${{ if ne(variables.blob_name, '') }}:
-      var_blob_name: $(blob_name)
-    ${{ if eq(variables.blob_name, '') }}:
-      var_blob_name: sa$(project_name)blb${{ parameters.environment }} #safsuiblbdevtesteastus2001
+  ${{ if ne(variables.blob_name, '') }}:
+    var_blob_name: $(blob_name)
+  ${{ if eq(variables.blob_name, '') }}:
+    var_blob_name: sa$(project_name)blb${{ parameters.environment }} #safsuiblbdevtesteastus2001
   
   # Type of Access Tier
-  - ${{ if ne(variables.access_tier, '') }}:
-      var_access_tier: $(access_tier)
-    ${{ if eq(variables.access_tier, '') }}:
-      var_access_tier: Hot
+  ${{ if ne(variables.access_tier, '') }}:
+    var_access_tier: $(access_tier)
+  ${{ if eq(variables.access_tier, '') }}:
+    var_access_tier: Hot
   
   # Type of Transport Layer Security Version
   - ${{ if ne(variables.tls_version, '') }}:
