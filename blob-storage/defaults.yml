@@ -18,7 +18,7 @@ variables:
   - name: var_sku
     ${{ if ne(parameters.sku, '') }}:
       value: "NOT-EMPTY"
-    ${{ if eq(parameters.sku), '' }}:
+    ${{ if eq(parameters.sku, '') }}:
       value: "EMPTY"
       # value: ${{ parameters.prm_sku }} 
     # value: "${{ parameters.prm_sku }}"
