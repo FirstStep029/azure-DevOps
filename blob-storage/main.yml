@@ -6,7 +6,7 @@
 
 # Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
-- master
+- none
 
 # Parameters Initialization for the job
 parameters:
