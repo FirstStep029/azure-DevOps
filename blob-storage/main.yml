@@ -67,7 +67,7 @@ variables:
       ${{ if ne(variables['sku'], '') }}:
         prm_sku: $(sku)
       ${{ if eq(variables['sku'], '') }}:
-        prm_sku: null
+        prm_sku: "DUMMY"
 
 
 # Job Stages Definition
