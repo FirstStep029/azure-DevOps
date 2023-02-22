@@ -6,7 +6,7 @@
 
 # Enables/Disables Pipeline Trigger for the branches listed here.
 trigger:
-- none
+- master
 
 # Parameters Initialization for the job
 parameters:
@@ -45,7 +45,7 @@ parameters:
 - name: stage
   displayName: Stage
   type: string
-  default: "DROP & CREATE"
+  default: "CREATE STORAGE ACCOUNT"
   values:
     - "DROP & CREATE"
     - "CREATE STORAGE ACCOUNT"
