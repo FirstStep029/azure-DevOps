@@ -68,9 +68,9 @@ variables:
       #   prm_sku: "NON-EMPTY"
       # ${{ eq(variables['sku'], '') }}:
       #   prm_sku: "EMPTY"
-      ${{ if eq([variables.sku], '') }}:
+      $[eq(variables['sku'], '')]:
         prm_sku: "EMPTY"
-      ${{ if ne([variables.sku], '') }}:
+      $[ne(variables['sku'], '')]:
         prm_sku: "NON-EMPTY"
 
 # Job Stages Definition
