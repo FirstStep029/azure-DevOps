@@ -49,9 +49,9 @@ parameters:
 # Variable Definition for the job
 variables:
   # Name of the blob
-  ${{ if ne(variables.blob_name, '') }}:
+  ${{ if ne(variables['blob_name'], '') }}:
     var_blob_name: $(blob_name)
-  ${{ if eq(variables.blob_name, '') }}:
+  ${{ if eq(variables['blob_name'], '') }}:
     var_blob_name: sa$(project_name)blb${{ parameters.environment }} #safsuiblbdevtesteastus2001
   
   # Type of Access Tier
