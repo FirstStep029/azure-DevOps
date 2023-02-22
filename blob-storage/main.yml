@@ -119,7 +119,7 @@ stages:
             
             # Testing
             - powershell: |
-                Write-Host "BLOB-NAME: $(blob_name) `nSKU: $(sku)"
+                Write-Host "BLOB-NAME: $(blob_name) `nSKU: ${{ variables.sku }}"
               displayName: Print Parameters & Variables
 
             # # Login Azure Session
