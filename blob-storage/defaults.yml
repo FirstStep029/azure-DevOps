@@ -20,4 +20,4 @@ variables:
     #   value: Standard_RAGRS
     # ${{ if parameters.prm_sku }}:
     #   value: ${{ parameters.prm_sku }} 
-    value: ${{ parameters.prm_sku }}
+    value: "${{ parameters.prm_sku }}"
