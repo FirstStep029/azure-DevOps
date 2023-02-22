@@ -15,7 +15,7 @@ variables:
     value: Disabled
   - name: kind
     value: StorageV2
-  - name: prm_sku
+  - name: var_sku
     ${{ if not(parameters.sku) }}:
       value: "NOT-EMPTY"
     ${{ if parameters.sku }}:
