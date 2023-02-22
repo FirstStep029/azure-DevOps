@@ -19,4 +19,4 @@ variables:
     ${{ if not(parameters.prm_sku) }}:
       value: Standard_RAGRS
     ${{ if parameters.prm_sku }}:
-      value: ${{ parameters.sku }} 
+      value: ${{ parameters.prm_sku }} 
