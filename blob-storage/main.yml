@@ -64,9 +64,9 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      ${{ if ne(variables['sku'], '') }}:
+      ${{ ne(variables['sku'], '') }}:
         prm_sku: $(sku)
-      ${{ if eq(variables['sku'], '') }}:
+      ${{ eq(variables['sku'], '') }}:
         prm_sku: "DUMMY"
 
 
