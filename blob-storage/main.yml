@@ -65,7 +65,7 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      sku: ${{ variables.sku }}
+      sku: $[variables.sku]
       # sku: $(sku)
       # ${{ ne(variables['sku'], '') }}:
       #   prm_sku: "NON-EMPTY"
