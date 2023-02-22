@@ -64,10 +64,10 @@ variables:
     parameters:
       project_name: $(project_name)
       environment: ${{ parameters.environment }}
-      ${{ ne(variables['sku'], '') }}:
-        prm_sku: $(sku)
-      ${{ eq(variables['sku'], '') }}:
+      ${{ if ne(variables['sku'], 'true') }}:
         prm_sku: "DUMMY"
+      ${{ if eq(variables['sku'], 'true') }}:
+        prm_sku: $(sku)
 
 
 # Job Stages Definition
