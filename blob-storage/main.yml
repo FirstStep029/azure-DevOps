@@ -33,7 +33,7 @@ parameters:
 - name: stage
   displayName: Stage
   type: string
-  default: "CREATE STORAGE ACCOUNT"
+  default: "DROP & CREATE"
   values:
     - "DROP & CREATE"
     - "CREATE STORAGE ACCOUNT"
