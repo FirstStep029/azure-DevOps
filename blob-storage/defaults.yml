@@ -1,7 +1,7 @@
 parameters:
 - name: project_name
 - name: environment
-# - name: prm_sku
+- name: prm_sku
 
 # Defines Blob Srtorage Name
 variables:
@@ -15,9 +15,9 @@ variables:
     value: Disabled
   - name: kind
     value: StorageV2
-  # - name: sku
+  - name: sku
     # ${{ if not(parameters.prm_sku) }}:
     #   value: Standard_RAGRS
     # ${{ if parameters.prm_sku }}:
     #   value: ${{ parameters.prm_sku }} 
-    # value: "${{ parameters.prm_sku }}"
+    value: "${{ parameters.prm_sku }}"
